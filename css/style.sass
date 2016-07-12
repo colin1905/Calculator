@@ -1,0 +1,104 @@
+//Mixins
+
+=linearGradient($top, $bottom)
+  background: $top
+  background: -moz-linear-gradient(top,  $top 0%, $bottom 100%)
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom))
+  background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%)
+  background: -o-linear-gradient(top,  $top 0%,$bottom 100%)
+  background: -ms-linear-gradient(top,  $top 0%,$bottom 100%)
+  background: linear-gradient(to bottom,  $top 0%,$bottom 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 )
+
+=border-radius($radius)
+  -webkit-border-radius: $radius
+  -moz-border-radius:    $radius
+  -ms-border-radius:     $radius
+  border-radius:         $radius
+
+=transition($transition...)
+  -moz-transition:    $transition
+  -o-transition:      $transition
+  -webkit-transition: $transition
+  transition:         $transition
+
+//Placeholder
+
+%btn
+  float: left
+  position: relative
+  top: 0
+  cursor: pointer
+  width: 66px
+  height: 36px
+  border: 1px solid #fff
+  box-shadow: 0px 4px rgba(#000, .2)
+  margin: 0 7px 11px 0
+  color: #fff
+  line-height: 36px
+  text-align: center
+  +transition(all 0.2s ease)
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  font: 15px Helvetica, sans-serif
+
+html
+  height: 100%
+  +linearGradient(#ff6969, #9fb8fe)
+  background-size: cover
+
+#calculator
+  width: 325px
+  height: auto
+  margin: 100px auto
+  padding: 20px 20px 9px
+  .top
+    overflow: hidden
+    .clear
+      float: left
+    .viewer
+      height: 38px
+      width: 212px
+      float: right
+      padding: 0 15px
+      background: rgba(#000, .2)
+      +border-radius(3px)
+      font-size: 17px
+      line-height: 40px
+      color: #fff
+      text-shadow: 1px 1px 2px rgba(#000, .2)
+      text-align: right
+      letter-spacing: 1px
+    span
+      &.clear
+        @extend %btn
+        background: #ff9fa8
+        &:hover
+          background: #f68991
+          box-shadow: 0px 4px #d3545d
+        &:active
+          box-shadow: 0px 0px #d3545d
+  .keys
+    overflow: hidden
+    span
+      @extend %btn
+      margin-right: 7px
+      width: calc(20% - 7px)
+      &:hover
+        color: #e1e0e0
+      &:active
+        box-shadow: 0px 0px #6b54d3
+        top: 4px
+      &.eval
+        background: #f1ff92
+        box-shadow: 0px 4px #9da853
+        color: #888e5f
+        &:hover
+          background: #f1ff92
+          color: #fff
+        &:active
+          box-shadow: 0px 0px #717a3e
+          top: 4px
